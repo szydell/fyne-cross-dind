@@ -8,5 +8,7 @@ RUN go install github.com/fyne-io/fyne-cross@latest
 
 FROM docker.io/library/docker:dind
 
+
+RUN apk add --no-cache --upgrade libc6-compat apk-tools zstd
+RUN apk upgrade --available
 COPY --from=build /go/bin/fyne-cross /usr/bin
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
