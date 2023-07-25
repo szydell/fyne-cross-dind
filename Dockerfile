@@ -9,5 +9,4 @@ RUN go install github.com/fyne-io/fyne-cross@latest
 FROM docker.io/library/docker:dind
 
 COPY --from=build /go/bin/fyne-cross /usr/bin
-
-CMD [ "bash" ]
+RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
