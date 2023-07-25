@@ -8,6 +8,6 @@ RUN go install github.com/fyne-io/fyne-cross@latest
 
 FROM docker.io/library/docker:dind
 
-COPY --from=build /go/bin/fyne-cross /usr/local/bin
+COPY --from=build /go/bin/fyne-cross /usr/bin
 
 CMD [ "bash" ]
